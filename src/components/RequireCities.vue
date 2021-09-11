@@ -14,12 +14,37 @@
     <br />
     <p>Respostas</p>
     <br />
-   <!--  {{ searchID }}
-    <br /> -->
-  <!--   {{ informationPopCensus }}
+    {{ searchID }}
     <br />
-    {{ informationPopCountOne }}
-    <br /> -->
+<!--     {{ informationPopCensus }}
+ -->
+    <div v-for=" results in informationPopCensus" :key="results">
+        <p v-for=" information in results.resultados" :key="information">
+            <ul>
+                <li v-for=" category in information.classificacoes" :key="category">{{category.categoria}}</li>
+                <li v-for=" yearQuery in information.series" :key="yearQuery">
+                    <span v-for=" year in Object.keys(yearQuery.serie)" :key="year"> 
+                        {{year}}: {{yearQuery.serie[year]}} <br>
+                    </span>
+                </li>
+            </ul>
+        </p>
+    </div>    
+    <br />
+   <!--  {{ informationPopCountOne }} -->
+    <div v-for=" results in informationPopCountOne" :key="results">
+        <p v-for=" information in results.resultados" :key="information">
+            <ul>
+                <li v-for=" category in information.classificacoes" :key="category">{{category.categoria}}</li>
+                <li v-for=" yearQuery in information.series" :key="yearQuery">
+                    <span v-for=" year in Object.keys(yearQuery.serie)" :key="year"> 
+                        {{year}}: {{yearQuery.serie[year]}} <br>
+                    </span>
+                </li>
+            </ul>
+        </p>
+    </div>
+    <br />
     
     <div v-for=" results in informationPopCountTwo" :key="results">
         <p v-for=" information in results.resultados" :key="information">
